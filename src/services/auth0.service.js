@@ -1,5 +1,6 @@
-const axios = require("axios");
-require("dotenv").config();
+import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
 const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
@@ -16,7 +17,7 @@ const getManagementToken = async () => {
   return response.data.access_token;
 };
 
-const createUserInAuth0 = async ({ firstName, lastName, contact, dob, city, time }) => {
+export const createUserInAuth0 = async ({ firstName, lastName, contact, dob, city, time }) => {
   const token = await getManagementToken();
 
   const payload = {
@@ -55,9 +56,4 @@ const createUserInAuth0 = async ({ firstName, lastName, contact, dob, city, time
     console.error("❌ Auth0 create user error:", error.response?.data || error.message);
     throw error;
   }
-};
-
-// ✅ EXPORT YOUR FUNCTION
-module.exports = {
-  createUserInAuth0,
 };

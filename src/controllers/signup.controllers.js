@@ -1,7 +1,7 @@
 // src/controllers/signup.controller.js
-const { createUserInAuth0 } = require("../services/auth0.service.js");
+import { createUserInAuth0 } from "../services/auth0.service.js";
 
-const signupController = async (req, res) => {
+export const signupController = async (req, res) => {
   try {
     console.log("🧪 Inside signupController");
 
@@ -37,8 +37,4 @@ const signupController = async (req, res) => {
     // For all other errors
     return res.status(400).json({ message: error.message || "Signup failed." });
   }
-};
-
-module.exports = {
-  signupController,
 };

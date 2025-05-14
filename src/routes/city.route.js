@@ -1,8 +1,10 @@
 // src/routes/city.route.js
-const express = require("express");
-const axios = require("axios");
-require("dotenv").config();
-const { GOOGLE_PLACES_AUTOCOMPLETE_URL } = require("../constants/apiConfig");
+import express from "express";
+import axios from "axios";
+import dotenv from "dotenv";
+import { GOOGLE_PLACES_AUTOCOMPLETE_URL } from "../constants/apiConfig.js";
+
+dotenv.config();
 
 const router = express.Router();
 
@@ -34,4 +36,4 @@ router.get("/search-cities", async (req, res) => {
   }
 });
 
-module.exports = { cityRouter: router };
+export default router;

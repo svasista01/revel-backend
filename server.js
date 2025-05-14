@@ -1,9 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
-const { signupRouter } = require("./src/routes/signup.route.js");
-const { cityRouter } = require("./src/routes/city.route.js"); // <-- import new route
+import signupRouter from "./src/routes/signup.route.js";
+import cityRouter from "./src/routes/city.route.js"; 
+import userRoutes from "./src/routes/user.routes.js";
+import authRoutes from "./src/routes/auth.routes.js";
 
 const app = express();
 
@@ -20,6 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 // ⭐ Routes
 app.use("/api/signup", signupRouter); // Signup routes
 app.use("/api", cityRouter);           // <-- City routes for city search!
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // ⭐ Health Check Route
 app.get("/", (req, res) => {

@@ -1,6 +1,6 @@
 // src/routes/signup.route.js
-const express = require("express");
-const { signupController } = require("../controllers/signup.controllers.js");
+import express from "express";
+import { signupController } from "../controllers/signup.controllers.js";
 
 const signupRouter = express.Router();
 
@@ -18,6 +18,4 @@ signupRouter.post("/", async (req, res, next) => {
   }
 });
 
-module.exports = {
-  signupRouter,
-};
+export default signupRouter;
